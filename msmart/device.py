@@ -195,6 +195,7 @@ class air_conditioning_device(device):
         self._active = True
         self._indoor_temperature = 0.0
         self._outdoor_temperature = 0.0
+        self._frost_protection_mode = False
     
     def __str__(self):
         return str(self.__dict__)
@@ -291,6 +292,7 @@ class air_conditioning_device(device):
             self._outdoor_temperature = outdoor_temperature
         self._on_timer = res.on_timer
         self._off_timer = res.off_timer
+        self._frost_protection_mode = res.frost_protection_mode
 
     def update_special(self, res: appliance_response):
         indoor_temperature = res.indoor_temperature
@@ -395,6 +397,10 @@ class air_conditioning_device(device):
     @property
     def off_timer(self):
         return self._off_timer
+    
+    @property
+    def frost_protection_mode(self):
+        return self._frost_protection_mode
 
 
 class unknown_device(device):
