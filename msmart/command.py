@@ -312,6 +312,11 @@ class appliance_response:
     @property
     def temp_unit(self):  # This needs a better name, dunno what it actually means
         return (self.data[0x09] & 0x80) > 0
+    
+    # Byte 0x21
+    @property
+    def frost_protection_mode(self):
+        return (self.data[0x21] & 0x80) > 0
 
     # Byte 0x0a
     @property
